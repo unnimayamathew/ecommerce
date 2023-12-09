@@ -1,0 +1,36 @@
+{% extends 'base.html '%}
+{% load static %}
+{% block metadescription %}
+   We have variety of items
+
+{% endblock %}
+{% block title %}
+      search
+{% endblock %}
+
+{% block content %}
+   <div>
+      <h1 class="text-center my_title">You have searched for:<b>"{{query}}"</b></h1>
+
+   </div>
+<div class="container-xxl py-5">
+    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        {% for product in products %}
+        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="overflow-hidden" style="min-width:18rem;">
+                <a href="{{product.get_url}}"> <img class="card-ing-top my-image" src="{{product.image.url}}" alt="{{product.name}}" </a>
+                <div class="card-body">
+                    <h4>{{product.name}}</h4>
+                    <p>{{product.name}}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div>
+            <p class="text-center my_search_text">0 result found</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
